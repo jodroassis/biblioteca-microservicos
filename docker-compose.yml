@@ -1,0 +1,28 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # porta da aplicação
+      - "15672:15672" # porta do painel de administração
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  mysql-catalogo:
+    image: mysql:8
+    container_name: mysql-catalogo
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: catalogo
+
+  mysql-emprestimo:
+    image: mysql:8
+    container_name: mysql-emprestimo
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: emprestimo
